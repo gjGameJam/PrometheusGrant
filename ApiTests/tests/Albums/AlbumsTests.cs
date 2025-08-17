@@ -17,6 +17,7 @@ namespace ApiTests.Tests.Albums
             _client = fixture.Client;
         }
 
+        //get test (all)
         [Fact]
         public async Task Get_All_Albums_Should_Return_List()
         {
@@ -27,6 +28,7 @@ namespace ApiTests.Tests.Albums
             albums[0].id.Should().BePositive();
         }
 
+        //get test (specific id)
         [Fact]
         public async Task Get_Album_By_Id_Should_Return_Album()
         {
@@ -38,6 +40,7 @@ namespace ApiTests.Tests.Albums
             album.title.Should().NotBeNullOrEmpty();
         }
 
+        //get test (invalid id)
         [Fact]
         public async Task Get_Album_Invalid_Id_Should_Return_404()
         {
@@ -48,6 +51,7 @@ namespace ApiTests.Tests.Albums
             response.Body.Should().BeNull();
         }
 
+        //post test (create album)
         [Fact]
         public async Task Create_Album_Should_Return_Created_Album()
         {
@@ -64,6 +68,7 @@ namespace ApiTests.Tests.Albums
             created.title.Should().Be(newAlbum.title);
         }
 
+        //put test (update album)
         [Fact]
         public async Task Update_Album_Should_Return_Updated_Album()
         {
@@ -81,6 +86,7 @@ namespace ApiTests.Tests.Albums
             result.title.Should().Be("Updated Title");
         }
 
+        //delete test (delete album)
         [Fact]
         public async Task Delete_Album_Should_Return_True()
         {
