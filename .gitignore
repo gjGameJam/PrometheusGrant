@@ -1,0 +1,59 @@
+# Build results
+bin/
+obj/
+out/
+[Bb]uild/
+[Ll]og/
+
+# VS Code
+.vscode/
+
+# Rider / JetBrains
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache/options
+.vs/
+*.dbmdl
+*.jfm
+*.opendb
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+*.psmdcp
+
+# Test results
+TestResult*/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Playwright
+# Browsers and driver binaries downloaded by Playwright
+bin/Debug/net*/playwright/.local-browsers/
+bin/Release/net*/playwright/.local-browsers/
+playwright/.local-browsers/
+playwright-report/
+test-results/
+
+# Node/npm (in case you mix JS Playwright with .NET)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
