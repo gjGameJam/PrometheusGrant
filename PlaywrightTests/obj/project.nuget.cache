@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "sEjrg5MXz0D816viF7rHQ/r81u6Az0/z5fnllnzXBZKn7HDHCR+JzUkNwrXBbkD/omNXkMWpAp17Ml+nUVsgtA==",
+  "dgSpecHash": "XYkfLAabYnOpZl3J42gQnr3BgVEsMcPkxOsUrhKWQLpAngKhD76Tdcb7RxO7PTcFdtmbwS4NUGU5BixvKsykhA==",
   "success": true,
   "projectFilePath": "C:\\Users\\bgern\\Desktop\\Prometheus\\PrometheusGrant\\PlaywrightTests\\PlaywrightTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bgern\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
+    "C:\\Users\\bgern\\.nuget\\packages\\fluentassertions\\8.6.0\\fluentassertions.8.6.0.nupkg.sha512",
     "C:\\Users\\bgern\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\bgern\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",
     "C:\\Users\\bgern\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
