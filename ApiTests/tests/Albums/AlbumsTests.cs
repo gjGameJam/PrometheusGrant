@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace ApiTests.Tests.Albums
 {
+    //Uses IClassFixture<ApiTestFixture> to inject a shared ApiClient for making HTTP calls
     public class AlbumsTests : IClassFixture<ApiTestFixture>
     {
         private readonly ApiTests.ApiClient.ApiClient _client;

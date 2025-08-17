@@ -6,11 +6,9 @@ using System.Net.Http.Headers;
 
 namespace ApiTests.ApiClient
 {
-    /// <summary>
-    /// Wrapper carrying both raw HttpResponseMessage and a deserialized body + raw content string.
-    /// This type owns the RawResponse and will dispose it when disposed.
-    /// Consumers should dispose ApiResponse when finished (or use 'using').
-    /// </summary>
+    // Wrapper carrying both raw HttpResponseMessage and a deserialized body + raw content string.
+    // This type owns the RawResponse and will dispose it when disposed.
+    // Consumers should dispose ApiResponse when finished (or use 'using').
     public sealed class ApiResponse<T> : IDisposable //If it is not disposed, underlying resources (sockets, stream buffers) may remain open until GC finalizes them — 
     // this can lead to connection leaks and socket exhaustion under heavy test runs.
     {
@@ -30,15 +28,11 @@ namespace ApiTests.ApiClient
         public string? ReasonPhrase => RawResponse.ReasonPhrase;
         public HttpResponseHeaders Headers => RawResponse.Headers;
 
-        /// <summary>
-        /// Return the first header value for the given name, or null if not present.
-        /// </summary>
+        // Return the first header value for the given name, or null if not present.
         public string? GetHeader(string name)
             => Headers.TryGetValues(name, out var values) ? values.FirstOrDefault() : null;
 
-        /// <summary>
-        /// Short debug string: status + truncated content preview.
-        /// </summary>
+        // Short debug string: status + truncated content preview.
         public override string ToString()
         {
             const int previewLength = 200;
