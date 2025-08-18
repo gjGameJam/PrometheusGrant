@@ -131,6 +131,7 @@ namespace ApiTests.ApiClient
 
         #region Helpers
 
+        //helpers to safely read content and deserialize without throwing
         private async Task<string> SafeReadContentAsync(HttpResponseMessage response)
         {
             if (response.Content == null) return string.Empty;
@@ -145,6 +146,7 @@ namespace ApiTests.ApiClient
             }
         }
 
+        //helper to try deserializing JSON, returns default(T) on failure
         private T? TryDeserialize<T>(string content)
         {
             if (string.IsNullOrWhiteSpace(content)) return default;
@@ -162,6 +164,7 @@ namespace ApiTests.ApiClient
 
         #region Disposal
 
+        //dispose pattern to clean up HttpClient
         public void Dispose()
         {
             if (_disposed) return;

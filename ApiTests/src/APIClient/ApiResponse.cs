@@ -15,18 +15,18 @@ namespace ApiTests.ApiClient
         public HttpResponseMessage RawResponse { get; }
         public T? Body { get; }
         public string Content { get; }
+        public HttpStatusCode StatusCode => RawResponse.StatusCode;
+        public bool IsSuccess => RawResponse.IsSuccessStatusCode;
+        public string? ReasonPhrase => RawResponse.ReasonPhrase;
+        public HttpResponseHeaders Headers => RawResponse.Headers;
 
+        // Constructs an ApiResponse wrapping the given raw response, deserialized body, and raw content string
         public ApiResponse(HttpResponseMessage rawResponse, T? body, string content)
         {
             RawResponse = rawResponse ?? throw new ArgumentNullException(nameof(rawResponse));
             Body = body;
             Content = content ?? string.Empty;
         }
-
-        public HttpStatusCode StatusCode => RawResponse.StatusCode;
-        public bool IsSuccess => RawResponse.IsSuccessStatusCode;
-        public string? ReasonPhrase => RawResponse.ReasonPhrase;
-        public HttpResponseHeaders Headers => RawResponse.Headers;
 
         // Return the first header value for the given name, or null if not present.
         public string? GetHeader(string name)
@@ -43,6 +43,7 @@ namespace ApiTests.ApiClient
         #region Disposal
         private bool _disposed;
 
+        //dispose pattern to clean up HttpClient
         public void Dispose()
         {
             if (_disposed) return;

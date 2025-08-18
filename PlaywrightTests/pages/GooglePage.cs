@@ -7,10 +7,11 @@ namespace PlaywrightTests.Pages
     {
         private readonly IPage _page;
 
-        // selectors (replace with actual ones after inspecting the page)
         private readonly string _searchInput = "input[name='q']";  // search box
         private readonly string _searchButton = "input[name='btnK']";  // search button
         private readonly string _resultsContainer = "#search";  // results div
+        private readonly string _googleDomain = "https://www.google.com";
+        private readonly string _enterButton = "Enter";
 
         public GooglePage(IPage page)
         {
@@ -20,7 +21,7 @@ namespace PlaywrightTests.Pages
         // navigate to google home
         public async Task GotoAsync()
         {
-            await _page.GotoAsync("https://www.google.com");
+            await _page.GotoAsync(_googleDomain);
         }
 
         // enter a query in the search box
@@ -32,7 +33,7 @@ namespace PlaywrightTests.Pages
         // click search button
         public async Task ClickSearchAsync()
         {
-            await _page.PressAsync(_searchInput, "Enter"); // pressing Enter is more reliable than button click
+            await _page.PressAsync(_searchInput, _enterButton); // pressing Enter is more reliable than button click
         }
 
         // check if a specific text appears in results

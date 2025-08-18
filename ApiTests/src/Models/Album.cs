@@ -1,5 +1,6 @@
 namespace ApiTests.Models
 {
+    // Album model representing a photo album
     public class Album
     {
         public int userId { get; set; }

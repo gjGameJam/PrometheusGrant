@@ -1,5 +1,6 @@
 namespace ApiTests.Models
 {
+    // User model representing a user with nested address and company details
     public class User
     {
         public int id { get; set; }
@@ -11,7 +12,8 @@ namespace ApiTests.Models
         public string website { get; set; } = string.Empty;
         public Company company { get; set; } = new Company();
     }
-
+    
+    // Nested Address model within User
     public class Address
     {
         public string street { get; set; } = string.Empty;
@@ -21,12 +23,14 @@ namespace ApiTests.Models
         public Geo geo { get; set; } = new Geo();
     }
 
+    // Nested Geo model within Address
     public class Geo
     {
         public string lat { get; set; } = string.Empty;
         public string lng { get; set; } = string.Empty;
     }
 
+    // Nested Company model within User
     public class Company
     {
         public string name { get; set; } = string.Empty;

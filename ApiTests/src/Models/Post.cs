@@ -1,5 +1,6 @@
 namespace ApiTests.Models
 {
+    // Post model representing a blog post
     public class Post
     {
         public int userId { get; set; }

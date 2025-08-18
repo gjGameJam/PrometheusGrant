@@ -1,5 +1,6 @@
 namespace ApiTests.Models
 {
+    // Comment model representing a comment on a post
     public class Comment
     {
         public int postId { get; set; }

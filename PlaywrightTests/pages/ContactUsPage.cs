@@ -12,17 +12,19 @@ namespace PlaywrightTests.Pages
         private readonly string _lastNameInput = "input[name=lastname]"; // similarly for last name
         private readonly string _submitButton = "input[type=submit]";
         private readonly string _errorMessage = ".error";  // generic error message placeholder
+        private readonly string _declineCookiesButton = "#hs-eu-decline-button"; // selector for cookie decline button
+        private readonly string _locatorOptions = "input[required], textarea[required], select[required]";
 
         public ContactUsPage(IPage page)
         {
             _page = page;
         }
 
-        // navigate directly to the contact us page
-        public async Task GotoAsync()
-        {
-            await _page.GotoAsync("https://www.prometheusgroup.com/contact-us");
-        }
+        // // navigate directly to the contact us page
+        // public async Task GotoAsync()
+        // {
+        //     await _page.GotoAsync("https://www.prometheusgroup.com/contact-us");
+        // }
 
         // fill out first name
         public async Task EnterFirstNameAsync(string firstName)
@@ -52,7 +54,7 @@ namespace PlaywrightTests.Pages
         public async Task<int> CountRequiredFieldsAsync()
         {
             // locate all required inputs, textareas, and selects
-            var allRequired = _page.Locator("input[required], textarea[required], select[required]");
+            var allRequired = _page.Locator(_locatorOptions);
 
             int count = 0;
             int total = await allRequired.CountAsync();
@@ -75,13 +77,14 @@ namespace PlaywrightTests.Pages
         public async Task DismissPopupsAsync()
         {
             // video popup — update selector when known
+            //upon further review, the video popup seems to be instantiated via javascript
             var videoClose = _page.Locator("button, a", new PageLocatorOptions { HasTextString = "×" });
             if (await videoClose.IsVisibleAsync(new LocatorIsVisibleOptions { Timeout = 5000 }))
                 await videoClose.ClickAsync();
 
 
             // cookie decline
-            var declineCookies = _page.Locator("#hs-eu-decline-button");
+            var declineCookies = _page.Locator(_declineCookiesButton);
             if (await declineCookies.IsVisibleAsync(new LocatorIsVisibleOptions { Timeout = 5000 }))
                 await declineCookies.ClickAsync();
         }

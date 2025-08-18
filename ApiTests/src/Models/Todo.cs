@@ -1,5 +1,6 @@
 namespace ApiTests.Models
 {
+    // Todo model representing a task item
     public class Todo
     {
         public int userId { get; set; }
