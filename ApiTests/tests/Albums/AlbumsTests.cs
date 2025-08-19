@@ -87,6 +87,42 @@ namespace ApiTests.Tests.Albums
             result.title.Should().Be("Updated Title");
         }
 
+        // put test (update album with wrong fields)
+        //JSONPlaceholder always accepts and echoes back any JSON so url is ignored, but we can still test the API's behavior
+        // to ensure it doesn't throw an error when unexpected fields are present.
+        [Fact]
+        public async Task Update_Album_With_Wrong_Fields_Should_Ignore_Invalid_Properties()
+        {
+            var invalidAlbumPayload = new
+            {
+                userId = 1,
+                id = 1,
+                url = "https://not-a-valid-field.com"
+            };
+
+            using var response = await _client.PutWithResponseAsync<Album>("albums/1", invalidAlbumPayload);
+
+            response.Should().NotBeNull();
+
+            // HTTP-level checks
+            response.IsSuccess.Should().BeTrue();
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+
+            // Body-level checks
+            response.Body.Should().NotBeNull();
+            response.Body!.id.Should().Be(1);
+            response.Body.userId.Should().Be(1);
+
+            // Title was omitted → null or empty
+            response.Body.title.Should().BeNullOrEmpty();
+
+            // If we want to prove JSONPlaceholder echoed the 'url', inspect Content (raw JSON)
+            response.Content.Should().Contain("https://not-a-valid-field.com");
+        }
+
+
+
+
         //delete test (delete album)
         [Fact]
         public async Task Delete_Album_Should_Return_True()
